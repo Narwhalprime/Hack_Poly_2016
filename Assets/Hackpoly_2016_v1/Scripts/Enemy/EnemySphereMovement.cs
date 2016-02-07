@@ -9,6 +9,12 @@ public class EnemySphereMovement : MonoBehaviour {
     Transform sphere;
     Vector3 sphereStartPos;
     Transform target;               // Reference to the player's position.
+    
+    public Material[] colors = new Material[4];
+    public Material mat0;
+    public Material mat1;
+    public Material mat2;
+    public Material mat3;
 
     public string playerBodyName;
     public string shieldName;
@@ -25,6 +31,11 @@ public class EnemySphereMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
+        colors[0] = mat0;
+        colors[1] = mat1;
+        colors[2] = mat2;
+        colors[3] = mat3;
+        GetComponent<Renderer>().material = colors[SpawnEnemy.colRot % 4];
         sphere = gameObject.transform;
         sphereStartPos = sphere.position;
         target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -46,12 +57,27 @@ public class EnemySphereMovement : MonoBehaviour {
         {
             Debug.Log("Combo lost");
             Instruction.combo = 0;
-            Instruction.health -= 10;
+            if (Instruction.health > 10)
+            {
+                Instruction.health -= 10;
+            }
+            else
+            {
+                Instruction.health -= Instruction.health;
+            }
         }
         else if (col.gameObject.name == shieldName)
         {
             Instruction.combo++;
-            Instruction.health += 5;
+            if(Instruction.health < 95)
+            {
+                Instruction.health += 5;
+            }
+            else
+            {
+                Instruction.health += 100 - Instruction.health;
+            }
+            
         }
         Destroy(gameObject);
     }

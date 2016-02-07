@@ -4,7 +4,9 @@ using System.Xml;
 using System;
 using System.Collections.Generic;
 
-public class SpawnEnemy : MonoBehaviour {
+public class SpawnEnemy : MonoBehaviour 
+{
+    public static int colRot = 0;
 
     public Rigidbody enemy;
     public GameObject player;
@@ -122,6 +124,7 @@ public class SpawnEnemy : MonoBehaviour {
             {
                 Vector3 startPos = startVectors[spawnPointInd];
                 UnityEngine.Object enemyClone = Instantiate(enemy, startPos, transform.rotation);
+                colRot++;
             }
         }
     }

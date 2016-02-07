@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 // Draw simple instructions for sample scene.
 // Check to see if a Myo armband is paired.
@@ -52,9 +53,8 @@ public class Instruction: MonoBehaviour
             );
             if (health <= 0)
             {
-                GUI.Label(new Rect(Screen.width / 3, Screen.height / 3, Screen.width, Screen.height),
-                    "You have failed, but keep playing to try and revive!"
-                );
+                new WaitForSeconds(2);
+                Application.LoadLevel("End Screen");
             }
         }
     }
