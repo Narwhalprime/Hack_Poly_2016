@@ -15,9 +15,9 @@ public class ColorBoxByPose : MonoBehaviour
     public GameObject myo = null;
 
     // Materials to change to when poses are made.
-    public GameObject waveInMaterial;
-    public GameObject waveOutMaterial;
-    public GameObject doubleTapMaterial;
+    public Material waveInMaterial;
+    public Material waveOutMaterial;
+    public Material doubleTapMaterial;
 
     // The pose from the last update. This is used to determine if the pose has changed
     // so that actions are only performed upon making them rather than every frame during
@@ -46,15 +46,15 @@ public class ColorBoxByPose : MonoBehaviour
 
             // Change material when wave in, wave out or double tap poses are made.
             } else if (thalmicMyo.pose == Pose.WaveIn) {
-                //GetComponent<Renderer>() = waveInMaterial;
+                GetComponent<Renderer>().material = waveInMaterial;
 
                 ExtendUnlockAndNotifyUserAction (thalmicMyo);
             } else if (thalmicMyo.pose == Pose.WaveOut) {
-                //GetComponent<Renderer>().material = waveOutMaterial;
+                GetComponent<Renderer>().material = waveOutMaterial;
 
                 ExtendUnlockAndNotifyUserAction (thalmicMyo);
             } else if (thalmicMyo.pose == Pose.DoubleTap) {
-                //GetComponent<Renderer>().material = doubleTapMaterial;
+                GetComponent<Renderer>().material = doubleTapMaterial;
 
                 ExtendUnlockAndNotifyUserAction (thalmicMyo);
             }

@@ -91,6 +91,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee2221e533d64fc478dec7eeda94329d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colors:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  mat0: {fileID: 2100000, guid: a3b2e9dd56c8f85438ae99e17ebe6bdd, type: 2}
+  mat1: {fileID: 2100000, guid: a0cc95d80e4295b4f90adf7024403201, type: 2}
+  mat2: {fileID: 2100000, guid: 8e8875d8af4b8b7499f93691bd45a0ab, type: 2}
+  mat3: {fileID: 2100000, guid: bf9956681acc4d94ca71c17c7097aa93, type: 2}
   playerBodyName: Camera
   shieldName: Energy
 --- !u!135 &13515904
@@ -136,6 +145,22 @@ Prefab:
       propertyPath: shieldName
       value: Energy
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: mat0
+      value: 
+      objectReference: {fileID: 2100000, guid: a3b2e9dd56c8f85438ae99e17ebe6bdd, type: 2}
+    - target: {fileID: 0}
+      propertyPath: mat1
+      value: 
+      objectReference: {fileID: 2100000, guid: a0cc95d80e4295b4f90adf7024403201, type: 2}
+    - target: {fileID: 0}
+      propertyPath: mat2
+      value: 
+      objectReference: {fileID: 2100000, guid: 8e8875d8af4b8b7499f93691bd45a0ab, type: 2}
+    - target: {fileID: 0}
+      propertyPath: mat3
+      value: 
+      objectReference: {fileID: 2100000, guid: bf9956681acc4d94ca71c17c7097aa93, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 168602}
