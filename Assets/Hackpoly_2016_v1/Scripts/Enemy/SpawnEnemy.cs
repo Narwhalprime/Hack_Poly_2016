@@ -20,7 +20,7 @@ public class SpawnEnemy : MonoBehaviour {
 
     private bool musicStarted;
 
-    public string levelFileName = "song-survivalgame";
+    public string levelFileName;
 
     Vector3[] startVectors;
 
@@ -43,6 +43,7 @@ public class SpawnEnemy : MonoBehaviour {
             new Vector3(8, -1, 50) + playerPos, new Vector3 (25, -1, 50) + playerPos};
 
         // Parsing XML file that has beatmap info
+        levelFileName = MainMenuHandler.XMLFileName;
         TextAsset file = (TextAsset)Resources.Load(levelFileName, typeof(TextAsset));
         beatmapXML = new XmlDocument();
         beatmapXML.LoadXml(file.text);
@@ -52,7 +53,7 @@ public class SpawnEnemy : MonoBehaviour {
     void ParseBeatmap()
     {
         XmlNodeList atts = beatmapXML.GetElementsByTagName("song")[0].ChildNodes;
-        string beatmapTitle;
+        string beatmapTitle = "";
         int bpm = 60;
         float start = 0.0f;
         string notes = "";
@@ -61,7 +62,7 @@ public class SpawnEnemy : MonoBehaviour {
             switch (att.Name)
             {
                 case "title":
-                    name = att.InnerText;
+                    beatmapTitle = att.InnerText;
                     break;
                 case "bpm":
                     bpm = int.Parse(att.InnerText);
@@ -72,9 +73,6 @@ public class SpawnEnemy : MonoBehaviour {
                 case "notes":
                     notes = att.InnerText;
                     break;
-                default:
-                    Debug.Log("Found bad XML tag! " + att.Name);
-                    break;
             }
         }
 
@@ -83,10 +81,11 @@ public class SpawnEnemy : MonoBehaviour {
         beatmapNotes = new int[tokens.Length];
         for(int ind = 0; ind < tokens.Length; ind++)
         {
-            Debug.Log("Token is: " + tokens[ind]);
             beatmapNotes[ind] = int.Parse(tokens[ind]);
         }
 
+        Debug.Log("Loading song: " + beatmapTitle);
+        song = Resources.Load(beatmapTitle) as AudioClip;
         interval = (60000 / bpm);
         firstNoteDelay = start;
 
