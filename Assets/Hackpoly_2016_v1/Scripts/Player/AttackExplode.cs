@@ -26,7 +26,7 @@ public class AttackExplode : MonoBehaviour
         if(other.name != "Camera" || other.name != "Big Bang")
         {
             Destroy(gameObject);
-            Debug.Log("Collides with " + other.name);
+            Debug.Log(gameObject + " collided with " + other.name);
         }
     }
 }
