@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: e9f73c111e5a1436295869186e2e823f
+timeCreated: 1454800328
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - myo: {instanceID: 0}
+  - waveInMaterial: {instanceID: 0}
+  - waveOutMaterial: {instanceID: 0}
+  - doubleTapMaterial: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
