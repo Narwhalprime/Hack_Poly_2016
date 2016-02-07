@@ -11,9 +11,12 @@ public class SpawnEnemy : MonoBehaviour {
     private float startTime;
     private float gameTime; // number of milliseconds passed
     private float interval;
-    private float startBuffer;
+    private float musicStartDelay;
+    private float firstNoteDelay;
     private int numTicks;
     private const int NUM_PATHS = 3;
+
+    private bool musicStarted;
 
     Vector3[] startVectors;
 
@@ -25,9 +28,13 @@ public class SpawnEnemy : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         startTime = Time.time;
-        interval = 60000/123;
-        startBuffer = 2000; // two seconds buffer
+        interval = (60000 / 123) * 2;
+        musicStartDelay = 2000; // two seconds before any music or notes begin
+        firstNoteDelay = 2200;
+
         numTicks = 0;
+
+        musicStarted = false;
 
         Vector3 playerPos = player.gameObject.transform.position;
 
@@ -35,13 +42,21 @@ public class SpawnEnemy : MonoBehaviour {
             new Vector3(13, -1, 15) + playerPos};
 
         enemies = new List<Object>();
-        AudioSource.PlayClipAtPoint(song, player.transform.position);
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
         gameTime = (Time.time - startTime) * 1000;
-        if (gameTime > (numTicks * interval) + startBuffer)
+        // is music supposed to be playing yet?
+        if(!musicStarted && gameTime > musicStartDelay)
+        {
+            AudioSource.PlayClipAtPoint(song, player.transform.position);
+            musicStarted = true;
+        }
+
+        // when is time to spawn another enemy?
+        if (gameTime > (numTicks * interval) + firstNoteDelay + musicStartDelay - (EnemySphereMovement.ENEMY_TRAVEL_TIME * 1000))
         {
             InstantiateEnemy();
             ++numTicks;
