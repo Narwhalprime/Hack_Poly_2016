@@ -14,7 +14,9 @@ public class WandShoot : MonoBehaviour
     public AudioClip m_UltClip;
 
     private float accel;
-    private int timer;
+    private float startTimer;
+    private float ultTimer;
+    private float fire_rate;
     private bool super;
 
     // Myo game object to connect with.
@@ -23,8 +25,9 @@ public class WandShoot : MonoBehaviour
 
     void Start()
     {
-        timer = 0;
+        startTimer = Time.time;
         super = false;
+        fire_rate = 0.5f;
     }
 
 	// Update is called once per frame
@@ -34,29 +37,26 @@ public class WandShoot : MonoBehaviour
         ThalmicMyo thalmicMyo = myo.GetComponent<ThalmicMyo>();
         accel = thalmicMyo.accelerometer.magnitude;
         //Debug.Log("Acceleration is " + accel);
-        if (accel >= 3.5f)
+        if (accel >= 3.5f && (Time.time-startTimer) > fire_rate)
         {
             //Fire Button is pressed
             Fire();
+            Debug.Log("Fireball launched");
+            startTimer = Time.time;
         }
-        if (super && thalmicMyo.pose == Pose.Fist && accel > 4.0f)
+        if ((Time.time - ultTimer) > 10 && thalmicMyo.pose == Pose.Fist)
         {
             UltimateFire();
+            ultTimer = Time.time;
         }
-        if(timer == 500)
-        {
-            Debug.Log("Ultimate is Ready");
-            super = true;
-        }
-        timer++;
 	}
 
     private void Fire()
     {
         //Instantiate and launch shell
-        Rigidbody boltInstance = Instantiate(m_Bolt, m_FireTransform.position, m_FireTransform.rotation) as Rigidbody;
-
-        boltInstance.velocity = 30 * m_FireTransform.forward;
+        Rigidbody boltInstance1 = Instantiate(m_Bolt) as Rigidbody;
+        Rigidbody boltInstance2 = Instantiate(m_Bolt) as Rigidbody;
+        Rigidbody boltInstance3 = Instantiate(m_Bolt) as Rigidbody;
         m_BoltAudio.clip = m_FireClip;
         m_BoltAudio.Play();
         
@@ -67,7 +67,5 @@ public class WandShoot : MonoBehaviour
         Rigidbody ult = Instantiate(m_Ultimate, m_UltimateTransform.position, m_UltimateTransform.rotation) as Rigidbody;
         m_BoltAudio.clip = m_UltClip;
         m_BoltAudio.Play();
-        super = false;
-        timer = 0;
     }
 }
