@@ -11,6 +11,7 @@ public class Instruction: MonoBehaviour
 
     public static int combo = 0;
     public static int max_combo = 0;
+    public static int health = 100;
 
     // Draw some basic instructions.
     void OnGUI()
@@ -41,14 +42,20 @@ public class Instruction: MonoBehaviour
                 "Perform the Sync Gesture."
             );
         }
-        else
+        else if (health > 0)
         {
             GUI.Label(new Rect(12, 8, Screen.width, Screen.height),
                 "Point hand to center of screen and open fingers\n" +
                 "Block incoming blocks to the music" +
-                "\nCombo: " + combo
+                "\nCombo: " + combo +
+                "\nHealth: " + health
             );
-
+            if (health <= 0)
+            {
+                GUI.Label(new Rect(Screen.width / 3, Screen.height / 3, Screen.width, Screen.height),
+                    "You have failed, but keep playing to try and revive!"
+                );
+            }
         }
     }
 
