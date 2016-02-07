@@ -127,5 +127,19 @@ public class SpawnEnemy : MonoBehaviour
                 colRot++;
             }
         }
+        else
+        {
+            if (numTicks + 50 > beatmapNotes.Length)
+            {
+                Debug.Log("END OF SONG");
+                StartCoroutine(DelayTimer());
+                Application.LoadLevel("End Scene");
+            }
+        }
+    }
+
+    IEnumerator DelayTimer()
+    {
+        yield return new WaitForSeconds(20f);
     }
 }

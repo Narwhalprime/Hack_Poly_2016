@@ -53,6 +53,7 @@ public class Instruction: MonoBehaviour
             );
             if (health <= 0)
             {
+                Debug.Log("YOU DIED");
                 new WaitForSeconds(2);
                 Application.LoadLevel("End Screen");
             }
