@@ -39,7 +39,7 @@ public class WandShoot : MonoBehaviour
             //Fire Button is pressed
             Fire();
         }
-        if (super && thalmicMyo.pose == Pose.Fist)
+        if (super && thalmicMyo.pose == Pose.Fist && accel > 4.0f)
         {
             UltimateFire();
         }
@@ -68,5 +68,6 @@ public class WandShoot : MonoBehaviour
         m_BoltAudio.clip = m_UltClip;
         m_BoltAudio.Play();
         super = false;
+        timer = 0;
     }
 }
