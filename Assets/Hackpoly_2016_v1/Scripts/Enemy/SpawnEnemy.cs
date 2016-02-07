@@ -129,7 +129,7 @@ public class SpawnEnemy : MonoBehaviour
         }
         else
         {
-            if (numTicks + 50 > beatmapNotes.Length)
+            if (numTicks > beatmapNotes.Length + 70)
             {
                 Debug.Log("END OF SONG");
                 StartCoroutine(DelayTimer());

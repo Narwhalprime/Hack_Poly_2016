@@ -57,14 +57,7 @@ public class EnemySphereMovement : MonoBehaviour {
         {
             Debug.Log("Combo lost");
             Instruction.combo = 0;
-            if (Instruction.health > 10)
-            {
-                Instruction.health -= 10;
-            }
-            else
-            {
-                Instruction.health -= Instruction.health;
-            }
+            Instruction.health -= 10;
         }
         else if (col.gameObject.name == shieldName)
         {
