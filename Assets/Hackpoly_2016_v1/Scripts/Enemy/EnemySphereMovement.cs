@@ -37,8 +37,8 @@ public class EnemySphereMovement : MonoBehaviour {
     // On collision with player, self-destroy
     void OnCollisionEnter(Collision col)
     {
-        Debug.Log("Collision happened with " + col.gameObject.name);
-        if (col.gameObject.name == playerBodyName)
+        //Debug.Log("Collision happened with " + col.gameObject.name);
+        if (col.gameObject.name == playerBodyName || col.gameObject.name == "FireBall")
         {
             Destroy(gameObject);
         }

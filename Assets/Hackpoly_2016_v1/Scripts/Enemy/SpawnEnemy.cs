@@ -31,8 +31,8 @@ public class SpawnEnemy : MonoBehaviour {
 
         Vector3 playerPos = player.gameObject.transform.position;
 
-        startVectors = new Vector3[NUM_PATHS] {new Vector3(-13, -1, 15) + playerPos, new Vector3(0, -1, 15) + playerPos,
-            new Vector3(13, -1, 15) + playerPos};
+        startVectors = new Vector3[NUM_PATHS] {new Vector3(-13, -1, 50) + playerPos, new Vector3(0, -1, 50) + playerPos,
+            new Vector3(13, -1, 50) + playerPos};
 
         enemies = new List<Object>();
         AudioSource.PlayClipAtPoint(song, player.transform.position);
@@ -41,11 +41,11 @@ public class SpawnEnemy : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         gameTime = (Time.time - startTime) * 1000;
-        if (gameTime > (numTicks * interval) + startBuffer)
+        if (gameTime > (numTicks * 2* interval) + startBuffer)
         {
             InstantiateEnemy();
             ++numTicks;
-            Debug.Log("We have instantiated an enemy at time "+gameTime);
+            //Debug.Log("We have instantiated an enemy at time "+gameTime);
         }
 	}
 

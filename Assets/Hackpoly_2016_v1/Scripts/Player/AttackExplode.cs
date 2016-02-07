@@ -16,12 +16,17 @@ public class AttackExplode : MonoBehaviour
         if(gameObject.transform.position.y <= 0)
         {
             Destroy(gameObject);
+            Debug.Log("Out of Bounds");
         }
     }
 	
 	// Update is called once per frame
 	public void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
-	}
+        if(other.name != "Camera" || other.name != "Big Bang")
+        {
+            Destroy(gameObject);
+            Debug.Log("Collides with " + other.name);
+        }
+    }
 }

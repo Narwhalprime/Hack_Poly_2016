@@ -38,8 +38,9 @@ public class WandShoot : MonoBehaviour
         {
             //Fire Button is pressed
             Fire();
+            Debug.Log("Fireball launched");
         }
-        if (super && thalmicMyo.pose == Pose.Fist && accel > 4.0f)
+        if (super && thalmicMyo.pose == Pose.Fist)
         {
             UltimateFire();
         }
@@ -54,9 +55,10 @@ public class WandShoot : MonoBehaviour
     private void Fire()
     {
         //Instantiate and launch shell
-        Rigidbody boltInstance = Instantiate(m_Bolt, m_FireTransform.position, m_FireTransform.rotation) as Rigidbody;
-
-        boltInstance.velocity = 30 * m_FireTransform.forward;
+        Rigidbody boltInstance1 = Instantiate(m_Bolt, m_FireTransform.position, m_FireTransform.rotation) as Rigidbody;
+        Rigidbody boltInstance2 = Instantiate(m_Bolt, m_FireTransform.position, m_FireTransform.rotation) as Rigidbody;
+        Rigidbody boltInstance3 = Instantiate(m_Bolt, m_FireTransform.position, m_FireTransform.rotation) as Rigidbody;
+        boltInstance1.velocity = 25 * m_FireTransform.forward;
         m_BoltAudio.clip = m_FireClip;
         m_BoltAudio.Play();
         
