@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<song name="winterglade">
+	<!-- Title: title of song to be displayed to users -->
+	<!-- BPM: beats per minute -->
+	<!-- Start: start time in milliseconds before hitting first note -->
+	<!-- Notes: space-separated tokens, each of which indicate a note (-1 means no note)-->
+	<title>Winterglade</title>
+	<bpm>123</bpm>
+	<start>2200</start>
+	<notes>1 -1 -1 -1 2 -1 -1 -1 0 -1 3 -1 2 1 0 2 3 2 3 -1 0 1 2 3 -1 -1 1 0 3 -1 3 2 1 0 1 2 3 -1 -1</notes>
+</song>

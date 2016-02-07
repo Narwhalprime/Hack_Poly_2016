@@ -8,7 +8,7 @@ public class EnemySphereMovement : MonoBehaviour {
 
     Transform sphere;
     Vector3 sphereStartPos;
-    Transform player;               // Reference to the player's position.
+    Transform target;               // Reference to the player's position.
 
     public string playerBodyName;
     private float lerpDistance;
@@ -25,7 +25,7 @@ public class EnemySphereMovement : MonoBehaviour {
 	void Start () {
         sphere = gameObject.transform;
         sphereStartPos = sphere.position;
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        target = GameObject.FindGameObjectWithTag("Player").transform;
         startTime = Time.time;
         duration = ENEMY_TRAVEL_TIME;
 	}
@@ -33,7 +33,7 @@ public class EnemySphereMovement : MonoBehaviour {
 	// Update is called once per frame
     void Update()
     {
-        sphere.position = Vector3.Lerp(sphereStartPos, player.position, (Time.time - startTime) / duration);
+        sphere.position = Vector3.Lerp(sphereStartPos, target.position + new Vector3(0, 4, 0), (Time.time - startTime) / duration);
     }
 
     // On collision with player, self-destroy

@@ -42,13 +42,18 @@ MonoBehaviour:
   enemy: {fileID: 5408182, guid: c73ed75bc6cd6f4499fbdf5fd5837828, type: 2}
   player: {fileID: 0}
   song: {fileID: 8300000, guid: a78f22b750c32f44a844624da2680186, type: 3}
+  levelFileName: song-winterglade
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: levelFileName
+      value: song-winterglade
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 186660}
