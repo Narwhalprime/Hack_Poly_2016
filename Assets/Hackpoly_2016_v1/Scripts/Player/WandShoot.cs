@@ -5,6 +5,9 @@ using Pose = Thalmic.Myo.Pose;
 
 public class WandShoot : MonoBehaviour 
 {
+
+
+    /*
     public Rigidbody m_Bolt;
     public Rigidbody m_Ultimate;
     public Transform m_FireTransform;
@@ -17,7 +20,6 @@ public class WandShoot : MonoBehaviour
     private float startTimer;
     private float ultTimer;
     private float fire_rate;
-    private bool super;
 
     // Myo game object to connect with.
     // This object must have a ThalmicMyo script attached.
@@ -26,7 +28,6 @@ public class WandShoot : MonoBehaviour
     void Start()
     {
         startTimer = Time.time;
-        super = false;
         fire_rate = 0.5f;
     }
 
@@ -68,4 +69,5 @@ public class WandShoot : MonoBehaviour
         m_BoltAudio.clip = m_UltClip;
         m_BoltAudio.Play();
     }
+     */
 }

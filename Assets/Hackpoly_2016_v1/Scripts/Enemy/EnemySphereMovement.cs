@@ -11,6 +11,7 @@ public class EnemySphereMovement : MonoBehaviour {
     Transform target;               // Reference to the player's position.
 
     public string playerBodyName;
+    public string shieldName;
     private float lerpDistance;
     private float lerpTime;
     private float startTime;
@@ -22,7 +23,8 @@ public class EnemySphereMovement : MonoBehaviour {
     float speed;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+    {
         sphere = gameObject.transform;
         sphereStartPos = sphere.position;
         target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -33,17 +35,22 @@ public class EnemySphereMovement : MonoBehaviour {
 	// Update is called once per frame
     void Update()
     {
-        sphere.position = Vector3.Lerp(sphereStartPos, target.position + new Vector3(0, 4, 0), (Time.time - startTime) / duration);
+        sphere.position = Vector3.Lerp(sphereStartPos, target.position + new Vector3(0, 4.5f, 0), (Time.time - startTime) / duration);
     }
 
     // On collision with player, self-destroy
     void OnCollisionEnter(Collision col)
     {
         //Debug.Log("Collision happened with " + col.gameObject.name);
-        if (col.gameObject.name == playerBodyName || col.gameObject.name == "FireBall")
+        if (col.gameObject.name == playerBodyName)
         {
-            Debug.Log("Collision happened with " + col.gameObject.name + " AT TIME " + Time.time);
-            Destroy(gameObject);
+            Debug.Log("Combo lost");
+            Instruction.combo = 0;
         }
+        else if (col.gameObject.name == shieldName)
+        {
+            Instruction.combo++;
+        }
+        Destroy(gameObject);
     }
 }

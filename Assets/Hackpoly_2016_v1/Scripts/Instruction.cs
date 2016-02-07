@@ -9,6 +9,9 @@ public class Instruction: MonoBehaviour
     // This object must have a ThalmicMyo script attached.
     public GameObject myo = null;
 
+    public static int combo = 0;
+    public static int max_combo = 0;
+
     // Draw some basic instructions.
     void OnGUI()
     {
@@ -42,11 +45,10 @@ public class Instruction: MonoBehaviour
         {
             GUI.Label(new Rect(12, 8, Screen.width, Screen.height),
                 "Point hand to center of screen and open fingers\n" +
-                "Fist: Vibrate Myo armband\n" +
-                "Wave in: Set element to water\n" +
-                "Wave out: Set box element to earth\n" +
-                "Double tap: Set element to fire\n"
+                "Block incoming blocks to the music" +
+                "\nCombo: " + combo
             );
+
         }
     }
 
