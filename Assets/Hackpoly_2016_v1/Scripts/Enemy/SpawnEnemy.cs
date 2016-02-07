@@ -20,7 +20,7 @@ public class SpawnEnemy : MonoBehaviour {
 
     private bool musicStarted;
 
-    public string levelFileName = "song-winterglade";
+    public string levelFileName = "song-survivalgame";
 
     Vector3[] startVectors;
 
@@ -119,7 +119,7 @@ public class SpawnEnemy : MonoBehaviour {
         if (numTicks < beatmapNotes.Length)
         {
             int spawnPointInd = beatmapNotes[numTicks];
-            if (spawnPointInd > 0)
+            if (spawnPointInd >= 0)
             {
                 Vector3 startPos = startVectors[spawnPointInd];
                 UnityEngine.Object enemyClone = Instantiate(enemy, startPos, transform.rotation);
